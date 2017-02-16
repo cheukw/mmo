@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+package game;
+
+message login {
+	uint32 role_id = 1;
+}

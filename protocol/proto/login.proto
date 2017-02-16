@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package login;
+
+message signin {
+	string token = 1;
+	int32 id = 2;
+	string name = 3;
+	string passwd = 4;
+	string sdkid = 5;
+}
+
+message signup {
+	string token = 1;
+	string name = 3;
+	string passwd = 4;
+	string sdkid = 5;
+}
+
+message ping {
+	string hello = 1;
+}
+
+message pong {
+	string hello = 1;
+}
