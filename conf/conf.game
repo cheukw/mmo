@@ -1,6 +1,6 @@
 skynetroot = "./skynet/"
 
-thread = 8
+thread = 4
 
 logger = nil
 logpath = "."
@@ -10,7 +10,12 @@ harbor = 0
 start = "main"	-- main script
 bootstrap = "snlua bootstrap"	-- The service for bootstrap
 
+game_addr = "127.0.0.1"
+game_port = 8888
 debug_port = 8001
+
+cluster = "./cluster/clustername.lua"
+nodename = "game"
 
 log_dirname = "log"
 log_basename = "game"

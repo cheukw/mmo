@@ -36,6 +36,9 @@ extern pingDefaultTypeInternal _ping_default_instance_;
 class pong;
 class pongDefaultTypeInternal;
 extern pongDefaultTypeInternal _pong_default_instance_;
+class pong_foo;
+class pong_fooDefaultTypeInternal;
+extern pong_fooDefaultTypeInternal _pong_foo_default_instance_;
 class signin;
 class signinDefaultTypeInternal;
 extern signinDefaultTypeInternal _signin_default_instance_;
@@ -429,6 +432,104 @@ class ping : public ::google::protobuf::Message /* @@protoc_insertion_point(clas
 };
 // -------------------------------------------------------------------
 
+class pong_foo : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:login.pong.foo) */ {
+ public:
+  pong_foo();
+  virtual ~pong_foo();
+
+  pong_foo(const pong_foo& from);
+
+  inline pong_foo& operator=(const pong_foo& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const pong_foo& default_instance();
+
+  static inline const pong_foo* internal_default_instance() {
+    return reinterpret_cast<const pong_foo*>(
+               &_pong_foo_default_instance_);
+  }
+
+  void Swap(pong_foo* other);
+
+  // implements Message ----------------------------------------------
+
+  inline pong_foo* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  pong_foo* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const pong_foo& from);
+  void MergeFrom(const pong_foo& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output)
+      const PROTOBUF_FINAL {
+    return InternalSerializeWithCachedSizesToArray(
+        ::google::protobuf::io::CodedOutputStream::IsDefaultSerializationDeterministic(), output);
+  }
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(pong_foo* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // string name = 2;
+  void clear_name();
+  static const int kNameFieldNumber = 2;
+  const ::std::string& name() const;
+  void set_name(const ::std::string& value);
+  #if LANG_CXX11
+  void set_name(::std::string&& value);
+  #endif
+  void set_name(const char* value);
+  void set_name(const char* value, size_t size);
+  ::std::string* mutable_name();
+  ::std::string* release_name();
+  void set_allocated_name(::std::string* name);
+
+  // uint32 fid = 1;
+  void clear_fid();
+  static const int kFidFieldNumber = 1;
+  ::google::protobuf::uint32 fid() const;
+  void set_fid(::google::protobuf::uint32 value);
+
+  // @@protoc_insertion_point(class_scope:login.pong.foo)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr name_;
+  ::google::protobuf::uint32 fid_;
+  mutable int _cached_size_;
+  friend struct  protobuf_proto_2flogin_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
 class pong : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:login.pong) */ {
  public:
   pong();
@@ -494,7 +595,21 @@ class pong : public ::google::protobuf::Message /* @@protoc_insertion_point(clas
 
   // nested types ----------------------------------------------------
 
+  typedef pong_foo foo;
+
   // accessors -------------------------------------------------------
+
+  // repeated .login.pong.foo f = 2;
+  int f_size() const;
+  void clear_f();
+  static const int kFFieldNumber = 2;
+  const ::login::pong_foo& f(int index) const;
+  ::login::pong_foo* mutable_f(int index);
+  ::login::pong_foo* add_f();
+  ::google::protobuf::RepeatedPtrField< ::login::pong_foo >*
+      mutable_f();
+  const ::google::protobuf::RepeatedPtrField< ::login::pong_foo >&
+      f() const;
 
   // string hello = 1;
   void clear_hello();
@@ -514,6 +629,7 @@ class pong : public ::google::protobuf::Message /* @@protoc_insertion_point(clas
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::RepeatedPtrField< ::login::pong_foo > f_;
   ::google::protobuf::internal::ArenaStringPtr hello_;
   mutable int _cached_size_;
   friend struct  protobuf_proto_2flogin_2eproto::TableStruct;
@@ -1018,6 +1134,76 @@ inline void ping::set_allocated_hello(::std::string* hello) {
 
 // -------------------------------------------------------------------
 
+// pong_foo
+
+// uint32 fid = 1;
+inline void pong_foo::clear_fid() {
+  fid_ = 0u;
+}
+inline ::google::protobuf::uint32 pong_foo::fid() const {
+  // @@protoc_insertion_point(field_get:login.pong.foo.fid)
+  return fid_;
+}
+inline void pong_foo::set_fid(::google::protobuf::uint32 value) {
+  
+  fid_ = value;
+  // @@protoc_insertion_point(field_set:login.pong.foo.fid)
+}
+
+// string name = 2;
+inline void pong_foo::clear_name() {
+  name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& pong_foo::name() const {
+  // @@protoc_insertion_point(field_get:login.pong.foo.name)
+  return name_.GetNoArena();
+}
+inline void pong_foo::set_name(const ::std::string& value) {
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:login.pong.foo.name)
+}
+#if LANG_CXX11
+inline void pong_foo::set_name(::std::string&& value) {
+  
+  name_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:login.pong.foo.name)
+}
+#endif
+inline void pong_foo::set_name(const char* value) {
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:login.pong.foo.name)
+}
+inline void pong_foo::set_name(const char* value, size_t size) {
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:login.pong.foo.name)
+}
+inline ::std::string* pong_foo::mutable_name() {
+  
+  // @@protoc_insertion_point(field_mutable:login.pong.foo.name)
+  return name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* pong_foo::release_name() {
+  // @@protoc_insertion_point(field_release:login.pong.foo.name)
+  
+  return name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void pong_foo::set_allocated_name(::std::string* name) {
+  if (name != NULL) {
+    
+  } else {
+    
+  }
+  name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), name);
+  // @@protoc_insertion_point(field_set_allocated:login.pong.foo.name)
+}
+
+// -------------------------------------------------------------------
+
 // pong
 
 // string hello = 1;
@@ -1072,7 +1258,39 @@ inline void pong::set_allocated_hello(::std::string* hello) {
   // @@protoc_insertion_point(field_set_allocated:login.pong.hello)
 }
 
+// repeated .login.pong.foo f = 2;
+inline int pong::f_size() const {
+  return f_.size();
+}
+inline void pong::clear_f() {
+  f_.Clear();
+}
+inline const ::login::pong_foo& pong::f(int index) const {
+  // @@protoc_insertion_point(field_get:login.pong.f)
+  return f_.Get(index);
+}
+inline ::login::pong_foo* pong::mutable_f(int index) {
+  // @@protoc_insertion_point(field_mutable:login.pong.f)
+  return f_.Mutable(index);
+}
+inline ::login::pong_foo* pong::add_f() {
+  // @@protoc_insertion_point(field_add:login.pong.f)
+  return f_.Add();
+}
+inline ::google::protobuf::RepeatedPtrField< ::login::pong_foo >*
+pong::mutable_f() {
+  // @@protoc_insertion_point(field_mutable_list:login.pong.f)
+  return &f_;
+}
+inline const ::google::protobuf::RepeatedPtrField< ::login::pong_foo >&
+pong::f() const {
+  // @@protoc_insertion_point(field_list:login.pong.f)
+  return f_;
+}
+
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

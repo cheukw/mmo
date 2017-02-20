@@ -1,0 +1,29 @@
+skynetroot = "./skynet/"
+
+thread = 4
+
+logger = nil
+logpath = "."
+
+harbor = 0
+
+start = "main"	-- main script
+bootstrap = "snlua bootstrap"	-- The service for bootstrap
+
+
+log_dirname = "log"
+log_basename = "game"
+
+sm_service = "./example/?.lua;"
+luaservice = skynetroot .. "service/?.lua;" .. sm_service
+snax = sm_service
+
+lualoader = skynetroot .. "lualib/loader.lua"
+-- preload = "./game/preload.lua"
+
+cpath = skynetroot .. "cservice/?.so"
+
+lua_path = skynetroot .. "lualib/?.lua;" .. "./lualib/?.lua;"
+lua_cpath = skynetroot .. "luaclib/?.so;" .. "./luaclib/?.so"
+
+--daemon = "./game.pid"

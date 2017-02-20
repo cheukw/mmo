@@ -1,2 +1,2 @@
-# mmoserver
+# mmo
 

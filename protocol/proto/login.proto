@@ -10,11 +10,16 @@ message signin {
 	string sdkid = 5;
 }
 
+
 message signup {
 	string token = 1;
 	string name = 3;
 	string passwd = 4;
 	string sdkid = 5;
+}
+
+message signin_ret {
+	
 }
 
 message ping {

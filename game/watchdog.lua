@@ -43,12 +43,9 @@ end
 
 function SOCKET.data(fd, msg)
 	--print("watchdog socket data ")
-	skynet.send(logind, "lua", "auth", "data", fd, msg)
 end
 
 function CMD.start(conf)
-	skynet.call(logind, "lua", "start")
-
 	skynet.call(gate, "lua", "open" , conf)
 end
 
@@ -67,8 +64,5 @@ skynet.start(function()
 			skynet.ret(skynet.pack(f(subcmd, ...)))
 		end
 	end)
-
-	logind = skynet.newservice("logind")
-
 	gate = skynet.newservice("gate")
 end)
