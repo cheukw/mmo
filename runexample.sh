@@ -1,3 +1,3 @@
 #!/bin/bash
 
-./skynet/skynet ./conf/conf.example
+./skynet/skynet ./conf/example.conf

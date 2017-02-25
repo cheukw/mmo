@@ -13,11 +13,17 @@ function CMD.start()
 	cluster.open(skynet.getenv("nodename") or "login")
 end
 
+function CMD.kick()
+	-- return skynet.call(game_proxy, "lua", "remote", "kick_user")
+end
+
+
+
 function register_login()
 	local gamed = cluster.query("game", "gamed")
-	proxy = cluster.proxy("game", gamed)
+	game_proxy = cluster.proxy("game", gamed)
 
-	return skynet.call(proxy, "lua", "remote", "register_login")
+	return skynet.call(game_proxy, "lua", "remote", "register_login")
 end
 
 function REMOTE.register_gate(address, port)
@@ -47,3 +53,4 @@ skynet.start(function( ... )
 		end
 	end)
 end)
+

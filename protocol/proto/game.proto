@@ -2,6 +2,25 @@ syntax = "proto3";
 
 package game;
 
-message login {
-	uint32 role_id = 1;
+message ping_c2g {
+	string msg = 1;
 }
+
+message pong_g2c {
+	string msg = 1;
+}
+
+message login_c2g {
+	string token = 1;
+	uint32 role_id = 2;
+}
+
+message login_g2c {
+	bool result = 1;
+	uint32 role_id = 2;
+	string rolename = 3;
+	uint32 level = 4;
+}
+
+
+

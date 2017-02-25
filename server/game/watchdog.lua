@@ -6,30 +6,10 @@ local SOCKET = {}
 local gate
 local agent = {}
 
-
-local agents = {}
-function get_agent()
-	if #agents == 0 then
-		for i=1,16 do
-			local a = skynet.newservice "agent"
-			table.insert(agents, a)
-		end
-	end
-
-	local a = agents[#agents]
-	table.remove(agents)
-	return a
-end
-
-function free_agent(a)
-	table.insert(agents, a)
-end
-
-
-
 function SOCKET.open(fd, addr)
-	skynet.error("New client from : " .. addr, fd)
-	agent[fd] = skynet.newservice "agent"
+	-- skynet.error("New client from : " .. fd .. " " .. addr)
+	agent[fd] = skynet.newservice("agent")
+	print("New client "..fd.." agent "..agent[fd])
 	skynet.call(agent[fd], "lua", "start", { gate = gate, client = fd, watchdog = skynet.self() })
 end
 
@@ -39,9 +19,7 @@ local function close_agent(fd)
 	if a then
 		skynet.call(gate, "lua", "kick", fd)
 		-- disconnect never return
-		skynet.call(a, "lua", "disconnect")
-
-		--free_agent(a)
+		skynet.send(a, "lua", "disconnect")
 	end
 end
 
@@ -51,7 +29,7 @@ function SOCKET.close(fd)
 end
 
 function SOCKET.error(fd, msg)
-	-- print("socket error",fd, msg)
+	print("socket error",fd, msg)
 	close_agent(fd)
 end
 
@@ -71,8 +49,6 @@ function CMD.close(fd)
 	close_agent(fd)
 end
 
-
-
 skynet.start(function()
 	skynet.dispatch("lua", function(session, source, cmd, subcmd, ...)
 		if cmd == "socket" then
@@ -84,6 +60,6 @@ skynet.start(function()
 			skynet.ret(skynet.pack(f(subcmd, ...)))
 		end
 	end)
-	gate = skynet.newservice("gate")
 
+	gate = skynet.newservice("gate")
 end)

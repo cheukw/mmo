@@ -7,21 +7,42 @@ skynet.start(function()
 		local console = skynet.newservice("console")
 	end
 	
-	local mysqld = skynet.newservice "mysqld"
-	-- print("mysqld service ", mysqld)
+	skynet.newservice("debug_console",8000)
 
-	skynet.call(mysqld, "lua", "start")
-	skynet.call(mysqld, "lua", "server_ver")
+	-- local dc = skynet.newservice "datad"
+	-- skynet.call(dc, "lua", "start")
+	-- skynet.call(dc, "lua", "close")
+	
 
-	local result = skynet.call(mysqld, "lua", "query", "select * from departments;")
-	-- print("result", result)
-	print("dept_no\t\tdept_name")
-	for i, row in ipairs(result) do
-		print(string.format("%s\t\t%s", row["dept_no"], row["dept_name"]))
-	end
+	local st = skynet.newservice "sometest"
+	print("address", st)
+	
+	-- skynet.call(st, "lua", "exit")
 
-	skynet.call(mysqld, "lua", "close")
+	skynet.call(st, "lua", "test_crypt")
+
+	--skynet.call(st, "lua", "test_sleep")
+	skynet.send(st, "lua", "test_sleep")
+	print("hello world.")
+	skynet.call(st, "lua", "test_sleep2")
+	
+	skynet.call(st, "lua", "exit")
+	-- local protod = {}
+	-- for i = 1,10 do
+	-- 	protod[i] = skynet.newservice "protod"
+	-- end
+
+	-- for i=1,10 do
+	-- 	local send_buffer = skynet.call(protod[i], "lua", "encode", 2001, "game.ping_c2g", {msg="hello world "..i})
+	-- 	print("send_buffer size:", #send_buffer)
+	-- 	local msg = skynet.call(protod[i], "lua", "decode", send_buffer)
+	-- 	--print("msg ", msg)
+	-- end
+
+	-- for i = 1,10 do
+	-- 	skynet.call(protod[i], "lua", "exit")
+	-- end
 end)
 
-
+    
 

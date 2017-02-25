@@ -1,5 +1,5 @@
 
-þ
+À
 proto/login.protologin"p
 signin
 token (	Rtoken
@@ -11,12 +11,10 @@
 token (	Rtoken
 name (	Rname
 passwd (	Rpasswd
-sdkid (	Rsdkid"
+sdkid (	Rsdkid"
+
+signin_ret"
 ping
-hello (	Rhello"h
+hello (	Rhello"
 pong
-hello (	Rhello
-f (2.login.pong.fooRf+
-foo
-fid (Rfid
-name (	Rnamebproto3
+hello (	Rhellobproto3

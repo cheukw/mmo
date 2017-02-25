@@ -22,10 +22,10 @@ class signinDefaultTypeInternal : public ::google::protobuf::internal::Explicitl
 } _signin_default_instance_;
 class signupDefaultTypeInternal : public ::google::protobuf::internal::ExplicitlyConstructed<signup> {
 } _signup_default_instance_;
+class signin_retDefaultTypeInternal : public ::google::protobuf::internal::ExplicitlyConstructed<signin_ret> {
+} _signin_ret_default_instance_;
 class pingDefaultTypeInternal : public ::google::protobuf::internal::ExplicitlyConstructed<ping> {
 } _ping_default_instance_;
-class pong_fooDefaultTypeInternal : public ::google::protobuf::internal::ExplicitlyConstructed<pong_foo> {
-} _pong_foo_default_instance_;
 class pongDefaultTypeInternal : public ::google::protobuf::internal::ExplicitlyConstructed<pong> {
 } _pong_default_instance_;
 
@@ -57,37 +57,34 @@ const ::google::protobuf::uint32 TableStruct::offsets[] = {
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(signup, passwd_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(signup, sdkid_),
   ~0u,  // no _has_bits_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(signin_ret, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ping, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ping, hello_),
   ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(pong_foo, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(pong_foo, fid_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(pong_foo, name_),
-  ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(pong, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(pong, hello_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(pong, f_),
 };
 
 static const ::google::protobuf::internal::MigrationSchema schemas[] = {
   { 0, -1, sizeof(signin)},
   { 9, -1, sizeof(signup)},
-  { 17, -1, sizeof(ping)},
-  { 22, -1, sizeof(pong_foo)},
-  { 28, -1, sizeof(pong)},
+  { 17, -1, sizeof(signin_ret)},
+  { 21, -1, sizeof(ping)},
+  { 26, -1, sizeof(pong)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
   reinterpret_cast<const ::google::protobuf::Message*>(&_signin_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&_signup_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&_signin_ret_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&_ping_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&_pong_foo_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&_pong_default_instance_),
 };
 
@@ -119,9 +116,9 @@ void TableStruct::Shutdown() {
   delete file_level_metadata[0].reflection;
   _signup_default_instance_.Shutdown();
   delete file_level_metadata[1].reflection;
-  _ping_default_instance_.Shutdown();
+  _signin_ret_default_instance_.Shutdown();
   delete file_level_metadata[2].reflection;
-  _pong_foo_default_instance_.Shutdown();
+  _ping_default_instance_.Shutdown();
   delete file_level_metadata[3].reflection;
   _pong_default_instance_.Shutdown();
   delete file_level_metadata[4].reflection;
@@ -133,8 +130,8 @@ void TableStruct::InitDefaultsImpl() {
   ::google::protobuf::internal::InitProtobufDefaults();
   _signin_default_instance_.DefaultConstruct();
   _signup_default_instance_.DefaultConstruct();
+  _signin_ret_default_instance_.DefaultConstruct();
   _ping_default_instance_.DefaultConstruct();
-  _pong_foo_default_instance_.DefaultConstruct();
   _pong_default_instance_.DefaultConstruct();
 }
 
@@ -149,13 +146,12 @@ void AddDescriptorsImpl() {
       "token\030\001 \001(\t\022\n\n\002id\030\002 \001(\005\022\014\n\004name\030\003 \001(\t\022\016\n"
       "\006passwd\030\004 \001(\t\022\r\n\005sdkid\030\005 \001(\t\"D\n\006signup\022\r"
       "\n\005token\030\001 \001(\t\022\014\n\004name\030\003 \001(\t\022\016\n\006passwd\030\004 "
-      "\001(\t\022\r\n\005sdkid\030\005 \001(\t\"\025\n\004ping\022\r\n\005hello\030\001 \001("
-      "\t\"S\n\004pong\022\r\n\005hello\030\001 \001(\t\022\032\n\001f\030\002 \003(\0132\017.lo"
-      "gin.pong.foo\032 \n\003foo\022\013\n\003fid\030\001 \001(\r\022\014\n\004name"
-      "\030\002 \001(\tb\006proto3"
+      "\001(\t\022\r\n\005sdkid\030\005 \001(\t\"\014\n\nsignin_ret\"\025\n\004ping"
+      "\022\r\n\005hello\030\001 \001(\t\"\025\n\004pong\022\r\n\005hello\030\001 \001(\tb\006"
+      "proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 294);
+      descriptor, 246);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "proto/login.proto", &protobuf_RegisterTypes);
   ::google::protobuf::internal::OnShutdown(&TableStruct::Shutdown);
@@ -1440,6 +1436,174 @@ void signup::set_allocated_sdkid(::std::string* sdkid) {
 // ===================================================================
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+signin_ret::signin_ret()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    protobuf_proto_2flogin_2eproto::InitDefaults();
+  }
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:login.signin_ret)
+}
+signin_ret::signin_ret(const signin_ret& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(NULL),
+      _cached_size_(0) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  // @@protoc_insertion_point(copy_constructor:login.signin_ret)
+}
+
+void signin_ret::SharedCtor() {
+  _cached_size_ = 0;
+}
+
+signin_ret::~signin_ret() {
+  // @@protoc_insertion_point(destructor:login.signin_ret)
+  SharedDtor();
+}
+
+void signin_ret::SharedDtor() {
+}
+
+void signin_ret::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* signin_ret::descriptor() {
+  protobuf_proto_2flogin_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_proto_2flogin_2eproto::file_level_metadata[2].descriptor;
+}
+
+const signin_ret& signin_ret::default_instance() {
+  protobuf_proto_2flogin_2eproto::InitDefaults();
+  return *internal_default_instance();
+}
+
+signin_ret* signin_ret::New(::google::protobuf::Arena* arena) const {
+  signin_ret* n = new signin_ret;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void signin_ret::Clear() {
+// @@protoc_insertion_point(message_clear_start:login.signin_ret)
+}
+
+bool signin_ret::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:login.signin_ret)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+  handle_unusual:
+    if (tag == 0 ||
+        ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+        ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+      goto success;
+    }
+    DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
+  }
+success:
+  // @@protoc_insertion_point(parse_success:login.signin_ret)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:login.signin_ret)
+  return false;
+#undef DO_
+}
+
+void signin_ret::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:login.signin_ret)
+  // @@protoc_insertion_point(serialize_end:login.signin_ret)
+}
+
+::google::protobuf::uint8* signin_ret::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic;  // Unused
+  // @@protoc_insertion_point(serialize_to_array_start:login.signin_ret)
+  // @@protoc_insertion_point(serialize_to_array_end:login.signin_ret)
+  return target;
+}
+
+size_t signin_ret::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:login.signin_ret)
+  size_t total_size = 0;
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = cached_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void signin_ret::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:login.signin_ret)
+  GOOGLE_DCHECK_NE(&from, this);
+  const signin_ret* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const signin_ret>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:login.signin_ret)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:login.signin_ret)
+    MergeFrom(*source);
+  }
+}
+
+void signin_ret::MergeFrom(const signin_ret& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:login.signin_ret)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+}
+
+void signin_ret::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:login.signin_ret)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void signin_ret::CopyFrom(const signin_ret& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:login.signin_ret)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool signin_ret::IsInitialized() const {
+  return true;
+}
+
+void signin_ret::Swap(signin_ret* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void signin_ret::InternalSwap(signin_ret* other) {
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata signin_ret::GetMetadata() const {
+  protobuf_proto_2flogin_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_proto_2flogin_2eproto::file_level_metadata[2];
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// signin_ret
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int ping::kHelloFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
@@ -1484,7 +1648,7 @@ void ping::SetCachedSize(int size) const {
 }
 const ::google::protobuf::Descriptor* ping::descriptor() {
   protobuf_proto_2flogin_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_proto_2flogin_2eproto::file_level_metadata[2].descriptor;
+  return protobuf_proto_2flogin_2eproto::file_level_metadata[3].descriptor;
 }
 
 const ping& ping::default_instance() {
@@ -1658,7 +1822,7 @@ void ping::InternalSwap(ping* other) {
 
 ::google::protobuf::Metadata ping::GetMetadata() const {
   protobuf_proto_2flogin_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_proto_2flogin_2eproto::file_level_metadata[2];
+  return protobuf_proto_2flogin_2eproto::file_level_metadata[3];
 }
 
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
@@ -1721,341 +1885,7 @@ void ping::set_allocated_hello(::std::string* hello) {
 // ===================================================================
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int pong_foo::kFidFieldNumber;
-const int pong_foo::kNameFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-
-pong_foo::pong_foo()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
-    protobuf_proto_2flogin_2eproto::InitDefaults();
-  }
-  SharedCtor();
-  // @@protoc_insertion_point(constructor:login.pong.foo)
-}
-pong_foo::pong_foo(const pong_foo& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
-      _cached_size_(0) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.name().size() > 0) {
-    name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
-  }
-  fid_ = from.fid_;
-  // @@protoc_insertion_point(copy_constructor:login.pong.foo)
-}
-
-void pong_foo::SharedCtor() {
-  name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  fid_ = 0u;
-  _cached_size_ = 0;
-}
-
-pong_foo::~pong_foo() {
-  // @@protoc_insertion_point(destructor:login.pong.foo)
-  SharedDtor();
-}
-
-void pong_foo::SharedDtor() {
-  name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-
-void pong_foo::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-}
-const ::google::protobuf::Descriptor* pong_foo::descriptor() {
-  protobuf_proto_2flogin_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_proto_2flogin_2eproto::file_level_metadata[3].descriptor;
-}
-
-const pong_foo& pong_foo::default_instance() {
-  protobuf_proto_2flogin_2eproto::InitDefaults();
-  return *internal_default_instance();
-}
-
-pong_foo* pong_foo::New(::google::protobuf::Arena* arena) const {
-  pong_foo* n = new pong_foo;
-  if (arena != NULL) {
-    arena->Own(n);
-  }
-  return n;
-}
-
-void pong_foo::Clear() {
-// @@protoc_insertion_point(message_clear_start:login.pong.foo)
-  name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  fid_ = 0u;
-}
-
-bool pong_foo::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:login.pong.foo)
-  for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // uint32 fid = 1;
-      case 1: {
-        if (tag == 8u) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, &fid_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // string name = 2;
-      case 2: {
-        if (tag == 18u) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_name()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->name().data(), this->name().length(),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "login.pong.foo.name"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0 ||
-            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-          goto success;
-        }
-        DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:login.pong.foo)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:login.pong.foo)
-  return false;
-#undef DO_
-}
-
-void pong_foo::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:login.pong.foo)
-  // uint32 fid = 1;
-  if (this->fid() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->fid(), output);
-  }
-
-  // string name = 2;
-  if (this->name().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->name().data(), this->name().length(),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "login.pong.foo.name");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      2, this->name(), output);
-  }
-
-  // @@protoc_insertion_point(serialize_end:login.pong.foo)
-}
-
-::google::protobuf::uint8* pong_foo::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic;  // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:login.pong.foo)
-  // uint32 fid = 1;
-  if (this->fid() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->fid(), target);
-  }
-
-  // string name = 2;
-  if (this->name().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->name().data(), this->name().length(),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "login.pong.foo.name");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        2, this->name(), target);
-  }
-
-  // @@protoc_insertion_point(serialize_to_array_end:login.pong.foo)
-  return target;
-}
-
-size_t pong_foo::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:login.pong.foo)
-  size_t total_size = 0;
-
-  // string name = 2;
-  if (this->name().size() > 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->name());
-  }
-
-  // uint32 fid = 1;
-  if (this->fid() != 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::UInt32Size(
-        this->fid());
-  }
-
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = cached_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-  return total_size;
-}
-
-void pong_foo::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:login.pong.foo)
-  GOOGLE_DCHECK_NE(&from, this);
-  const pong_foo* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const pong_foo>(
-          &from);
-  if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:login.pong.foo)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:login.pong.foo)
-    MergeFrom(*source);
-  }
-}
-
-void pong_foo::MergeFrom(const pong_foo& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:login.pong.foo)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  if (from.name().size() > 0) {
-
-    name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
-  }
-  if (from.fid() != 0) {
-    set_fid(from.fid());
-  }
-}
-
-void pong_foo::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:login.pong.foo)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void pong_foo::CopyFrom(const pong_foo& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:login.pong.foo)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool pong_foo::IsInitialized() const {
-  return true;
-}
-
-void pong_foo::Swap(pong_foo* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
-void pong_foo::InternalSwap(pong_foo* other) {
-  name_.Swap(&other->name_);
-  std::swap(fid_, other->fid_);
-  std::swap(_cached_size_, other->_cached_size_);
-}
-
-::google::protobuf::Metadata pong_foo::GetMetadata() const {
-  protobuf_proto_2flogin_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_proto_2flogin_2eproto::file_level_metadata[3];
-}
-
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// pong_foo
-
-// uint32 fid = 1;
-void pong_foo::clear_fid() {
-  fid_ = 0u;
-}
-::google::protobuf::uint32 pong_foo::fid() const {
-  // @@protoc_insertion_point(field_get:login.pong.foo.fid)
-  return fid_;
-}
-void pong_foo::set_fid(::google::protobuf::uint32 value) {
-  
-  fid_ = value;
-  // @@protoc_insertion_point(field_set:login.pong.foo.fid)
-}
-
-// string name = 2;
-void pong_foo::clear_name() {
-  name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-const ::std::string& pong_foo::name() const {
-  // @@protoc_insertion_point(field_get:login.pong.foo.name)
-  return name_.GetNoArena();
-}
-void pong_foo::set_name(const ::std::string& value) {
-  
-  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:login.pong.foo.name)
-}
-#if LANG_CXX11
-void pong_foo::set_name(::std::string&& value) {
-  
-  name_.SetNoArena(
-    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:login.pong.foo.name)
-}
-#endif
-void pong_foo::set_name(const char* value) {
-  
-  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:login.pong.foo.name)
-}
-void pong_foo::set_name(const char* value, size_t size) {
-  
-  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:login.pong.foo.name)
-}
-::std::string* pong_foo::mutable_name() {
-  
-  // @@protoc_insertion_point(field_mutable:login.pong.foo.name)
-  return name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-::std::string* pong_foo::release_name() {
-  // @@protoc_insertion_point(field_release:login.pong.foo.name)
-  
-  return name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-void pong_foo::set_allocated_name(::std::string* name) {
-  if (name != NULL) {
-    
-  } else {
-    
-  }
-  name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), name);
-  // @@protoc_insertion_point(field_set_allocated:login.pong.foo.name)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
-
-// ===================================================================
-
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int pong::kHelloFieldNumber;
-const int pong::kFFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 pong::pong()
@@ -2069,7 +1899,6 @@ pong::pong()
 pong::pong(const pong& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL),
-      f_(from.f_),
       _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   hello_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
@@ -2118,7 +1947,6 @@ pong* pong::New(::google::protobuf::Arena* arena) const {
 
 void pong::Clear() {
 // @@protoc_insertion_point(message_clear_start:login.pong)
-  f_.Clear();
   hello_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
@@ -2144,19 +1972,6 @@ bool pong::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        break;
-      }
-
-      // repeated .login.pong.foo f = 2;
-      case 2: {
-        if (tag == 18u) {
-          DO_(input->IncrementRecursionDepth());
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtualNoRecursionDepth(
-                input, add_f()));
-        } else {
-          goto handle_unusual;
-        }
-        input->UnsafeDecrementRecursionDepth();
         break;
       }
 
@@ -2194,12 +2009,6 @@ void pong::SerializeWithCachedSizes(
       1, this->hello(), output);
   }
 
-  // repeated .login.pong.foo f = 2;
-  for (unsigned int i = 0, n = this->f_size(); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      2, this->f(i), output);
-  }
-
   // @@protoc_insertion_point(serialize_end:login.pong)
 }
 
@@ -2218,13 +2027,6 @@ void pong::SerializeWithCachedSizes(
         1, this->hello(), target);
   }
 
-  // repeated .login.pong.foo f = 2;
-  for (unsigned int i = 0, n = this->f_size(); i < n; i++) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageNoVirtualToArray(
-        2, this->f(i), false, target);
-  }
-
   // @@protoc_insertion_point(serialize_to_array_end:login.pong)
   return target;
 }
@@ -2232,17 +2034,6 @@ void pong::SerializeWithCachedSizes(
 size_t pong::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:login.pong)
   size_t total_size = 0;
-
-  // repeated .login.pong.foo f = 2;
-  {
-    unsigned int count = this->f_size();
-    total_size += 1UL * count;
-    for (unsigned int i = 0; i < count; i++) {
-      total_size +=
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->f(i));
-    }
-  }
 
   // string hello = 1;
   if (this->hello().size() > 0) {
@@ -2277,7 +2068,6 @@ void pong::MergeFrom(const pong& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:login.pong)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  f_.MergeFrom(from.f_);
   if (from.hello().size() > 0) {
 
     hello_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.hello_);
@@ -2307,7 +2097,6 @@ void pong::Swap(pong* other) {
   InternalSwap(other);
 }
 void pong::InternalSwap(pong* other) {
-  f_.UnsafeArenaSwap(&other->f_);
   hello_.Swap(&other->hello_);
   std::swap(_cached_size_, other->_cached_size_);
 }
@@ -2370,36 +2159,6 @@ void pong::set_allocated_hello(::std::string* hello) {
   }
   hello_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), hello);
   // @@protoc_insertion_point(field_set_allocated:login.pong.hello)
-}
-
-// repeated .login.pong.foo f = 2;
-int pong::f_size() const {
-  return f_.size();
-}
-void pong::clear_f() {
-  f_.Clear();
-}
-const ::login::pong_foo& pong::f(int index) const {
-  // @@protoc_insertion_point(field_get:login.pong.f)
-  return f_.Get(index);
-}
-::login::pong_foo* pong::mutable_f(int index) {
-  // @@protoc_insertion_point(field_mutable:login.pong.f)
-  return f_.Mutable(index);
-}
-::login::pong_foo* pong::add_f() {
-  // @@protoc_insertion_point(field_add:login.pong.f)
-  return f_.Add();
-}
-::google::protobuf::RepeatedPtrField< ::login::pong_foo >*
-pong::mutable_f() {
-  // @@protoc_insertion_point(field_mutable_list:login.pong.f)
-  return &f_;
-}
-const ::google::protobuf::RepeatedPtrField< ::login::pong_foo >&
-pong::f() const {
-  // @@protoc_insertion_point(field_list:login.pong.f)
-  return f_;
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS

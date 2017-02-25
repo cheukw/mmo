@@ -1,3 +1,3 @@
 #!/bin/bash
 
-./skynet/skynet ./conf/conf.game
+./skynet/skynet ./conf/game.conf

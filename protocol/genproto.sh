@@ -11,4 +11,7 @@ do
 
 	# gen c++ file
 	./protoc ./proto/$f --cpp_out=src
+
+	# gen golang file
+	./protoc ./proto/$f --go_out=gosrc
 done

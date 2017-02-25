@@ -13,12 +13,16 @@ end
 
 -- 
 function CMD.register_gate()
+	print("register_gate", skynet.self())
+
 	local logind = cluster.query("login", "logind")
 	proxy = cluster.proxy("login", logind)
 
 	local address = skynet.getenv "game_addr" or "127.0.0.1"
 	local port = skynet.getenv "game_port" or 8888
-	return skynet.call(proxy, "lua", "remote", "register_gate", address, port)
+	local ret = skynet.call(proxy, "lua", "remote", "register_gate", address, port)
+	print("register_gate. wait", skynet.self())
+	return ret
 end
 
 local count = 1
@@ -37,7 +41,8 @@ function CMD.ping_login()
 end
 
 function REMOTE.register_login()
-	print("gamed cluster register_login")
+	print("gamed cluster register_login", skynet.self())
+
 	return true
 end
 
